@@ -117,8 +117,15 @@ xhr.open("GET", "https://restcountries.com/v3.1/all");
 xhr.send();
 xhr.onload = function () {
     const data = JSON.parse(xhr.response)
-    console.log(data);
     console.log(xhr.status)
+
+    // console.log(data[0].flags.png)
+    // console.log(data[0].subregion)
+    data.forEach((val)=>{
+      console.log(`Flag is : ${val.flags.png}
+      Region : ${val.subregion}`)
+    })
+
 }
 
 ///////////////////////////////////
