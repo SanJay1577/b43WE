@@ -1,0 +1,88 @@
+p{
+background-color: black;
+color: white;
+}
+
+/* differnt types of proeprties */
+/* list porperty */
+
+ul{
+    list-style-type : circle;
+   }
+
+/* font property */
+p{
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 900;
+    }
+/* border property */
+
+p{
+    border: 10px solid red;
+}
+/* text property  */
+p{
+    text-align :center
+}
+
+/* class using . selector */
+
+.ele{
+    border: 1px solid black;
+    width: 75px;
+    height : 50px;
+    text-align : center;
+    background-color : greenyellow;
+}
+
+.brd{
+    border : 2px solid red;
+    font-family :Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+/* class using # selector */
+#uni-ele{
+  background-color: plum;
+}
+#main-component{
+    border: 1px solid black;
+}
+/* id and class - accept
+id and id - no 
+class and class - accept */
+
+#container a div{
+    background-color : red;
+    margin: 5px;
+    padding: 2px;
+}
+.anc-link{
+    background-color : green !important;
+}
+
+.block{
+    display: block;
+     padding: 5px;
+     margin: 10px;
+     width: 70px;
+     height : 20px;
+     background-color: red;
+}
+.inline{
+    display: inline;
+    background-color: green;
+    padding: 5px;
+    margin: 10px;
+    /* will not take width and height */
+    width: 70px; 
+    height : 20px;
+}
+.inline-block {
+    display: inline-block;
+    background-color: black;
+    color : white;
+    padding: 10px;
+    margin: 10px;
+    width: 70px;
+    height: 20px; 
+}
