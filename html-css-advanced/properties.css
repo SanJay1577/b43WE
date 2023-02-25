@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Gajraj+One&family=Shantell+Sans:wght@300&display=swap');
+*{
+    text-align: center;
+}
+
+.overflow-main{
+    width : 50%;
+    height : 300px;
+    border: 1px solid red;
+    background-color: chocolate;
+    overflow: auto;
+    font-family: 'Gajraj One', cursive;
+    /* All contents will be visible even after the size change
+    overflow: visible; */  
+
+    /* The contents will be hidden from the display screen
+    overflow: hidden; */
+
+    /* An extra scrollable sixe based on your size limits 
+    overflow: scroll; */
+    
+    /* based on x and y direction we can define the overflow property 
+    overflow-y: hidden ; */
+
+    /* It will detect and give a suiatble overflow scroll type */
+    /* overflow: auto;  */
+     
+}
+
+
+.measurements{
+    margin : 0 auto;
+    border :1px solid black;
+    width : 50%;
+    height : 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap : 0.5rem;
+    font-size: 25px;
+    font-family: 'Shantell Sans', cursive;
+
+}
+
+#sample{
+    width: 1em;
+    height: 1em;
+    background-color: red;
+
+}
+
+#sample-2{
+    width: 4pc;
+    height: 50%;
+    background-color: blue;
+}
+
+#percent{
+    background-color: brown;
+    width: 50%;
+    height: 50%;
+}
+/* Mesurements
+Absoulte 
+cm , mm, in 
+px pixels (1/96 (1in)) 
+pt points (1/72 (1in))
+pc picas (1/12pt (1in))
+
+50incd monitior vh - 50 inch  - 1vh 1inch
+
+Relative
+em = elements based on font size
+*/
+
+/* media query 
+
+big screen size  */
+
+@media only screen and (max-width : 1200px){
+    body {
+        background-color: blue;
+    }
+    .overflow-main{
+        background-color: whitesmoke;
+        font-family: 'Shantell Sans', cursive;
+        width: 25%;
+    }
+   
+}
+
+/* mid screen (tablet or mini laptop) */
+
+@media only screen and (max-width : 700px){
+
+    body {
+        background-color: red;
+    }
+    .overflow-main{
+        background-color: black;
+        color:white;
+        font-family: 'Gajraj One', cursive;
+        width: 50%;
+    }
+    
+}
+/* small screen */
+
+@media only screen and (max-width : 375px){
+
+    body {
+        background-color: green;
+    }
+    .overflow-main{
+        background-color: red;
+        color:yellow;
+        font-family: 'Gajraj One', cursive;
+        width: 100%;
+    }
+    
+}
