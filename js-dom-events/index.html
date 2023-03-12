@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js-Dom-Events</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+ <h1>JS Dom Events</h1>
+<div class="inbuild-box">
+    <button class="inbuil-func" onclick="alertFunc(`hey I'm triggerd`)">Alert</button>
+   <button class="inbuil-func" onclick="promptFunc()">Promt</button>
+   <button class="inbuil-func" onclick="confirmFunc()">confirm</button>
+</div>
+
+<div id="prompt-element"></div>
+ <div>
+    <h3>Set time out</h3>
+    <button onclick="countDown()">Start Timeout</button>
+    <div id="time-element"></div>
+
+    <h3>Set Interval</h3>
+    <button onclick="intervalFunc()">Start Interval</button>
+    <div id="interval-element"></div>
+ </div>
+
+    <div class="event-properties">
+        <h3>Click event</h3>
+       <button onclick="clickEvent()">Click</button>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+<!-- Window - Common Util functions
+prompt, Alert, confirm
+setTimeout vs setInterval
+working with events -->
