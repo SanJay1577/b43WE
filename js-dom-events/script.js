@@ -70,13 +70,118 @@ function intervalFunc(){
 
 ///////////Events///////////////
 
-let clickCounter = 0
+let clk_btn = document.querySelector("#event-click");
 
-function clickEvent(){
-  clickCounter++;
-  log(`You have clicked the count ${clickCounter} times`)
+function clickedButtton(){ //verb
+  console.log("clikced the button")
 }
 
+// add event setup
+// Object.addEventListener("click", ()=>{
 
+// })
+// add event listener 
+let addEvent_btn = document.querySelector("#add-event"); 
 
+addEvent_btn.addEventListener("click", ()=>{
+  console.log("add-event-button clicked")
+  const result = input_box.value;
+  formElement.textContent = eval(result);
+})
 
+// window.addEventListener("click", ()=>{
+//   console.log("window is clicked")
+// })
+
+//Difference 4 essential events 
+// 1--- window events 
+    // - scroll
+    // - resize 
+// 2 --- form events 
+//  - focus 
+//  - blur
+//  - change 
+//  - input
+//  -submit 
+//  -click
+ //3 --- key board Events
+//  -keydown
+//  -keyPress 
+//  - keyup 
+  //4 --- mouse events
+  // mouseDown
+  // mouseup
+  // mousemove
+
+  // window events 
+  let demo_result = document.querySelector("#res-content") 
+let windowCount = 0;
+  window.addEventListener("scroll", ()=>{
+     windowCount++;
+     console.log("Hey there I', scrolled ", windowCount)
+  })
+
+window.addEventListener("resize", (event)=>{
+  //console.log(event)
+  demo_result.textContent = ( `the width of the screen ${event.target.innerWidth}
+              the height of the screen ${event.target.innerHeight} ` )
+})
+
+// form event 
+
+let inputArea = document.createElement("textarea"); 
+inputArea.setAttribute("id", "mes-area");
+
+let validationString = document.createElement("div");
+validationString.setAttribute("id", "message-validate");
+
+inputArea.style.width = "300px";
+inputArea.style.height = "200px";
+let maximumChar = 100;
+
+inputArea.addEventListener("input", ()=>{
+ const remaningAllowedChar = maximumChar - inputArea.value.length
+ console.log(remaningAllowedChar); 
+ const styledColor = remaningAllowedChar < 20 ? "red" :"green" 
+ validationString.textContent = `Remaining allowed Char is ${remaningAllowedChar}`
+ validationString.style.color = styledColor
+ if (remaningAllowedChar == 0){
+  alert("Hey stop typing")
+ }
+})
+
+const formElement = document.createElement("div");
+
+//submit event
+let selct_form = document.getElementById("form-id");
+
+selct_form.addEventListener("submit", (event)=>{
+  // stop refrehing the pages
+  event.preventDefault()
+  formElement.textContent = inputArea.value;
+  console.log("submited")
+})
+
+let input_box = document.createElement("input")
+
+//mouse events 
+// window.addEventListener("mouseup", ()=>{
+//   document.body.style.background = "coral"
+// })
+
+// window.addEventListener("mousedown", ()=>{
+//   document.body.style.background = "crimson"
+// })
+
+window.addEventListener("mouseout", ()=>{
+ demo_result.textContent = ""
+})
+
+window.addEventListener("mousemove", (e)=>{
+  demo_result.textContent = `
+  The X cordinates : ${e.clientX}
+  The Y axis Cordinates : ${e.clientY}
+  `
+})
+
+document.body.append(inputArea, validationString, formElement, input_box)
