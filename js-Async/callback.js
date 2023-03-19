@@ -29,6 +29,7 @@ function collectTheCash() {
 }
 
 function winthdrawCashFromBank() {
+    //callback hell 
 insertCard(()=>{
     selectAccount(()=>{
         selectOptions(()=>{
