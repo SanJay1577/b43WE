@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="script.css"/>
+</head>
+<body>
+     <div class="container">
+        <form class = "add-student-form">
+            <h3>Create new Student</h3>
+            <input 
+            type="text"
+            name="name"
+            value = ""
+            placeholder="Enter Student Name"
+            class="input-text"
+            >
+            <br><br>
+
+            <input 
+            type="text"
+            name="batch"
+            value = ""
+            placeholder="Enter Student batch"
+            class="input-text"
+            >
+            <br><br>
+            <input 
+            type="text"
+            name="age"
+            value = ""
+            required
+            placeholder="Enter Student age"
+            class="input-text"
+            >
+            <input 
+            type="submit"
+            name="submit"
+            value = "create new student"
+            placeholder="Enter Student age"
+            class="submit"
+            >
+            <br><br>
+        </form>
+     </div>
+
+     <p id="head">Render Students <button id ="new-stud-btn">Add student</button></p>
+
+    <div id="student-list"></div>
+    <script src="script.js"></script>
+</body>
+</html>

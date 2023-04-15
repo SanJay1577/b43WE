@@ -1,0 +1,26 @@
+[
+    {
+     "name": "santhosh",
+     "batch": "B43WE",
+     "age": "21",
+     "id": "1"
+    },
+    {
+     "name": "ARUN",
+     "batch": "B43WE",
+     "age": "22",
+     "id": "2"
+    },
+    {
+     "name": "Chandru",
+     "batch": "B43WE",
+     "age": "22",
+     "id": "3"
+    },
+    {
+        "name": "Rajesh",
+        "batch": "B43WE",
+        "age": "23",
+        "id": "4"
+    }
+   ]
