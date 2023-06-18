@@ -1,62 +1,113 @@
-const fs = require("fs")
-const os = require("os")
-
-console.log(process.argv);
-// get value from command line argument 
-const [, ,name2, name3 ] = process.argv;
-console.log("command line value is ", name2, name3);
-// reading a file from your computer 
-
-fs.readFile("./sampleFile.txt","utf-8",(err, data)=>{
-    if(err){
-        console.log(err)
-    }else {
-        console.log(data)
+const express = require("express");
+const fs = require("fs");
+const path = require("path");
+const dirPath = path.join(__dirname, "timestamps");
+const app = express();
+ app.use(express.json())
+app.get("/timestamp", (req, res) => {
+  let date = new Date();
+  const timeStampDate = ` Last updated : ${date.toUTCString().slice(0, -3)}`;
+  fs.writeFileSync(
+    `${path.join(dirPath, "current-date-time.txt")}`,
+    timeStampDate,
+    (err) => {
+      if (err) {
+        console.log("err", err);
+      }
     }
-} )
+  );
+  res.sendFile(path.join(dirPath, "current-date-time.txt"));
+});
 
-const content = "I'm writting a new file"
+// oru sample operatios
+let carData = [
+  {
+    name: "slavia",
+    country: "german",
+    company: "Skoda",
+    fuel: "diesel",
+    type: "manual",
+  },
+  {
+    name: "virtus",
+    country: "german",
+    company: "vokswagon",
+    fuel: "petrol",
+    type: "DSG",
+  },
+  {
+    name: "Verna",
+    country: "Korea",
+    company: "Hyndai",
+    fuel: "petrol",
+    type: "manual",
+  },
+  {
+    name: "city",
+    country: "japan",
+    company: "Honda",
+    fuel: "diesel",
+    type: "DCT",
+  },
+];
 
-fs.writeFile("./newfile.txt", content, (err)=>{
-    if(err){
-        console.log(err)
-    }else{
-        console.log("file writted successfully")
+// car data api endpoints 
+// get all data with querys
+app.get("/car/all", (req, res)=>{
+    const {type, fuel} = req.query;
+    let returnData = carData;
+    if(req.query){
+        if(type) {
+        returnData  = returnData.filter((val)=>val.type=== type);
+        }
+        if(fuel){
+            returnData = returnData.filter((val)=>val.fuel=== fuel)
+        }
     }
+    res.json({data : returnData});
 })
 
-const content2 = "\nI'm writting a new file 2"
-// appending a file 
-fs.appendFile("./newfile.txt", content2,(err)=>{
-    if(err){
-        console.log(err)
-    }else{
-        console.log("file updated successfully")
-    }
-}); 
-
-fs.unlink("./newfile.txt", (err)=>{
-    if(err){
-        console.log(err)
-    }else{
-        console.log("File deleted sucessfully")
-    }
+// get data using params
+app.get("/car/:name" ,(req, res)=>{
+const {name} = req.params;
+  const selectedData = carData.find((val)=>val.name === name)
+   res.status(200).json({name : selectedData, company: selectedData})
 })
 
-console.log("free memory", os.freemem())
-console.log("Version", os.version())
-console.log("Total memory", os.totalmem())
-console.log("Cpu---", os.cpus())
+app.get("/car/all/spec", (req, res)=>{
+    const selectedInfo = carData.map((val)=> ({name : val.name, company: val.company}))
+    console.log()
+    res.status(200).json({data:selectedInfo})
+})
+
+app.post("/car/add", (req, res)=>{
+     const newcar = req.body;
+     carData.push(newcar);
+     res.status(201).json({data:carData})
+})
+
+app.put("/car/edit/:name", (req, res)=>{
+    const {name} = req.params;
+    const selectedCar = carData.find((val)=>val.name===name);
+    selectedCar.type = req.body.type
+    res.status(200).send(selectedCar)
+
+})
+
+app.delete("/car/remove/:name", (req, res)=>{
+    const {name} = req.params;
+    console.log(name)
+    const newCarlist = carData.filter((val)=>val.name!==name);
+    carData = newCarlist
+    res.status(200).send({message:`${name} is deleted sucessfully`})
+     
+})
 
 
-/// Date packages..
-let time = Date.now();
-console.log("Time", time)
-const date = new Date();
-console.log("Date----", date)
-console.log("Today----", date.getDate())
-console.log("Month----", date.getMonth())
-console.log("Year----", date.getFullYear())
-console.log("UTCString----", date.toUTCString().slice(0,17))
+//listen and start a http server in specific port
+app.listen(9000, () => console.log(`Server started in localhost:9000`));
 
 
+// {  mathod
+//     body: json.stringly(newContent)
+// }
