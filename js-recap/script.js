@@ -57,6 +57,8 @@ const personObj = {
     }
 }
 console.log(window)
+
+
 console.log(this)
 console.log(personObj.name)
 personObj.getDetails()

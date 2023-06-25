@@ -1,11 +1,12 @@
 import express from "express";
+import dotenv from "dotenv"
 import { studentRouter } from "./Routes/students.js";
-
-const PORT = 9000;
+dotenv.config();
+const PORT = process.env.PORT
 
 // initiating a server
 const app = express();
-
+// configuring env variables 
 //middle wares
 app.use(express.json());
 
